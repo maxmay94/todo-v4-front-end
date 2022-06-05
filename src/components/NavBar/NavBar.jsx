@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const NavBar = ({ user, handleLogout }) => {
   return (
-    <div className='bg-gray-700 hover:bg-gray-600'>
+    <div className='bg-gray-700 hover:bg-gray-600 p-3'>
       {user ?
         <nav>
           <ul className='flex'>

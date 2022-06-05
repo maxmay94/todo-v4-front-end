@@ -1,7 +1,17 @@
 import * as tokenService from './tokenService'
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/todos`
 
-export async function getAllTodos() {
+export const getAllTodos = async() => {
+  try {
+    const res = await fetch(BASE_URL)
+    const data = await res.json()
+    return data
+  } catch(err) {
+    throw err
+  }
+}
+
+export const createTodo = async() => {
   try {
 
   } catch(err) {
@@ -9,7 +19,7 @@ export async function getAllTodos() {
   }
 }
 
-export async function createTodo() {
+export const deleteTodos = async(todoId) => {
   try {
 
   } catch(err) {
@@ -17,7 +27,7 @@ export async function createTodo() {
   }
 }
 
-export async function deleteTodos(todoId) {
+export const updateTodo = async(todoId, title) => {
   try {
 
   } catch(err) {
@@ -25,17 +35,11 @@ export async function deleteTodos(todoId) {
   }
 }
 
-export async function updateTodo(todoId, title) {
+export const doTodo = async(todoId) => {
   try {
-
-  } catch(err) {
-    throw err
-  }
-}
-
-export async function doTodo(todoId) {
-  try {
-
+    await fetch(`${BASE_URL}/${todoId}/done`, {
+      method: 'PATCH'
+    })
   } catch(err) {
     throw err
   }
